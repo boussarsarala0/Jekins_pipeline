@@ -19,7 +19,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 // Log in to Docker Hub using your credentials
-                sh 'docker login -u khalilsellamii -p $Dockerhub_pass'
+                sh 'docker login -u khalilsellamii -p Khalil3456'
 
                 // Push the built image to Docker Hub
                 sh 'docker push khalilsellamii/jenkins-pipeline:latest'
