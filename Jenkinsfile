@@ -19,7 +19,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build your Docker image. Make sure to specify your Dockerfile and any other build options.
-                sh 'docker build -t khalilsellamii/jenkins-pipeline:${BUILD_TAG} .'
+                sh 'docker build -t khalilsellamii/jenkins-pipeline:v1.${BUILD_TAG} .'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
                 sh 'docker login -u khalilsellamii -p $DOCKER_HUB_PASSWORD'
 
                 // Push the built image to Docker Hub
-                sh 'docker push khalilsellamii/jenkins-pipeline:${BUILD_TAG}'
+                sh 'docker push khalilsellamii/jenkins-pipeline:v1.${BUILD_TAG}'
             }
         }
     }
@@ -37,7 +37,6 @@ pipeline {
     post {
         success {
             echo 'Pipeline completed successfully!'
-            echo ${BUILD_TAG}
         }
     }
 }
