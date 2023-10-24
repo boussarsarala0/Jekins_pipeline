@@ -1,11 +1,16 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_HUB_PASSWORD = credentials('Dockerhub_pass')
+    }
+
     stages {
         stage('Checkout') {
             steps {
                 // Check out your source code from your version control system, e.g., Git.
-                sh 'echo "This is cloning the git repo"'
+                sh 'rm -rf Jekins_pipeline'
+                sh 'git clone https://github.com/khalilsellamii/Jekins_pipeline'
             }
         }
 
@@ -19,7 +24,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 // Log in to Docker Hub using your credentials
-                sh 'docker login -u khalilsellamii -p Khalil3456'
+                sh 'docker login -u khalilsellamii -p $DOCKER_HUB_PASSWORD'
 
                 // Push the built image to Docker Hub
                 sh 'docker push khalilsellamii/jenkins-pipeline:latest'
