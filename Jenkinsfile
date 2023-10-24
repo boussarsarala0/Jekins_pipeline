@@ -5,6 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Check out your source code from your version control system, e.g., Git.
+                sh 'rm -rf Jenkins_pieline'
                 sh 'git clone https://github.com/khalilsellamii/Jekins_pipeline'
             }
         }
