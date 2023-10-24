@@ -17,7 +17,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build your Docker image. Make sure to specify your Dockerfile and any other build options.
-                sh 'docker build -t khalilsellamii/jenkins-pipeline:latest .'
+                sh 'docker build -t khalilsellamii/jenkins-pipeline:v1.0 .'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
                 sh 'docker login -u khalilsellamii -p $DOCKER_HUB_PASSWORD'
 
                 // Push the built image to Docker Hub
-                sh 'docker push khalilsellamii/jenkins-pipeline:latest'
+                sh 'docker push khalilsellamii/jenkins-pipeline:v1.0'
             }
         }
     }
