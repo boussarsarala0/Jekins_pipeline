@@ -37,7 +37,7 @@ pipeline {
     post {
         success {
             echo 'Pipeline completed successfully!'
-            echo '${BUILD_TAG}'
+            echo ${BUILD_TAG}
         }
     }
 }
