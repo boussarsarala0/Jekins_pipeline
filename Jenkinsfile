@@ -16,6 +16,13 @@ pipeline {
             }
         }
 
+        stage('Testing') {
+            steps {
+                // Check out your source code from your version control system, e.g., Git.
+                sh 'python3 src/test.py'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 // Build your Docker image. Make sure to specify your Dockerfile and any other build options.
@@ -32,6 +39,7 @@ pipeline {
                 sh 'docker push khalilsellamii/jenkins-pipeline:v1.${BUILD_TAG}'
             }
         }
+
     }
 
     post {
