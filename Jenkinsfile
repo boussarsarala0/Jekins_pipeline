@@ -48,6 +48,7 @@ pipeline {
                 // Deploy on kubernetes
                 sh 'kubectl apply -f kubernetes/deployment.yaml'
                 sh 'kubectl apply -f kubernetes/svc.yaml'
+                sh 'kubectl get all'
             }
         }
 
