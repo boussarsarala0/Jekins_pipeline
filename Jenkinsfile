@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         DOCKER_HUB_PASSWORD = credentials('Dockerhub_pass')
+        KUBE_CONFIG_FILE = credentials('KUBE_CONFIG_FILE')
         BUILD_TAG = "${BUILD_NUMBER}"
 
     }
@@ -39,6 +40,17 @@ pipeline {
                 sh 'docker push khalilsellamii/jenkins-pipeline:v1.${BUILD_TAG}'
             }
         }
+        stage('Deploy on k8s') {
+            steps {
+                // Connect to the k3s cluster
+                sh 'export KUBECONFIG=$KUBE_CONFIG_FILE'
+
+                // Deploy on kubernetes
+                sh 'kubectl apply -f kubernetes/deployment.yaml'
+                sh 'kubectl apply -f kubernetes/svc.yaml'
+            }
+        }
+
 
     }
 
