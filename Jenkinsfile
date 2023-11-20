@@ -48,7 +48,7 @@ pipeline {
         stage('Deploy on k8s') {
             steps {
                 // Connect to the k3s cluster
-                sh 'export KUBECONFIG=$KUBE_CONFIG_FILE'
+                sh 'export KUBECONFIG=kluster.yaml'
 
                 // Deploy on kubernetes
                 sh 'kubectl apply -f kubernetes/deployment.yaml'
