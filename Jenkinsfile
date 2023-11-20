@@ -45,18 +45,6 @@ pipeline {
                 sh 'docker push khalilsellamii/jenkins-pipeline:latest'
             }
         }
-        stage('Deploy on k8s') {
-            steps {
-                // Connect to the k3s cluster
-                sh 'export KUBECONFIG=kluster.yaml'
-
-                // Deploy on kubernetes
-                sh 'kubectl apply -f kubernetes/deployment.yaml'
-                sh 'kubectl apply -f kubernetes/svc.yaml'
-                sh 'kubectl get all'
-            }
-        }
-
 
     }
 
