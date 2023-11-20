@@ -26,7 +26,7 @@ pipeline {
         stage('sonarqube-scanner') {
             steps {
                 sh '/opt/sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner --version'
-                sh '/opt/sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner -Dsonar.projectKey=pyhton -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_16a855c2325c570920b51557cf950762b09d7146'
+                sh '/opt/sonar-scanner-4.6.2.2472-linux/bin/sonar-scanner -Dsonar.projectKey=pyhton -Dsonar.sources=. -Dsonar.host.url=http://172.17.0.1:9000 -Dsonar.token=sqp_16a855c2325c570920b51557cf950762b09d7146'
             }
         }
 
