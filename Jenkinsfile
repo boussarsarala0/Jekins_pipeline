@@ -38,6 +38,15 @@ pipeline {
             }
         }
 
+        stage('deploy on k8s') {
+            steps {
+                sh ' export KUBECONFIG=kluster.yaml '
+                sh ' kubectl apply -f kubernetes/deployment.yaml'
+                sh ' kubectl apply -f kubernetes/svc.yaml'
+                sh ' kubectl get all'
+            }
+        }
+
     }
 
     post {
