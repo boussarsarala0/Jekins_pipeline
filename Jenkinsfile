@@ -47,6 +47,15 @@ pipeline {
             }
         }
 
+        stage ('prometheus & grafana') {
+            steps {
+                sh ' kubectl create ns monitoring '
+                sh ' helm repo add prometheus-community https://prometheus-community.github.io/helm-charts '
+                sh ' helm repo update '
+                sh ' helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring'
+            }
+        } 
+
     }
 
     post {
