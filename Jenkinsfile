@@ -24,7 +24,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build your Docker image. Make sure to specify your Dockerfile and any other build options.
-                sh 'docker build -t alabousssarsar/jenkins-pipeline:$BUILD_TAG .'
+                sh 'docker build -t alabousssarsar/jenkins-pipeline:latest .'
             }
         }
 
@@ -34,7 +34,7 @@ pipeline {
                 sh 'docker login -u alabousssarsar -p @Azizomar008'
 
                 // Push the built image to Docker Hub
-                sh 'docker push alabousssarsar/jenkins-pipeline:$BUILD_TAG'
+                sh 'docker push alabousssarsar/jenkins-pipeline:latest'
             }
         }
 
