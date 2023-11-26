@@ -2,8 +2,6 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_PASSWORD = credentials('Dockerhub_pass')
-        KUBE_CONFIG_FILE = credentials('KUBE_CONFIG_FILE')
         BUILD_TAG = "${BUILD_NUMBER}"
 
     }
@@ -26,7 +24,7 @@ pipeline {
                 stage('Build Docker Image') {
             steps {
                 // Build your Docker image. Make sure to specify your Dockerfile and any other build options.
-                sh 'docker build -t alabousssarsar/jenkins-pipeline:latest .'
+                sh 'docker build -t alabousssarsar/jenkins-pipeline:$BUILD_TAG .'
             }
         }
 
@@ -36,7 +34,7 @@ pipeline {
                 sh 'docker login -u alabousssarsar -p @Azizomar008'
 
                 // Push the built image to Docker Hub
-                sh 'docker push alabousssarsar/jenkins-pipeline:latest'
+                sh 'docker push alabousssarsar/jenkins-pipeline:$BUILD_TAG'
             }
         }
 
