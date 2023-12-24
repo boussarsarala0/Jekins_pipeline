@@ -44,7 +44,7 @@ pipeline {
                    export KUBECONFIG=./kubernetes/kluster.yaml
                    kubectl apply -f kubernetes/deployment.yaml
                    kubectl apply -f kubernetes/svc.yaml
-                   kubectl get all'
+                   kubectl get all
                 '''
             }
         }
