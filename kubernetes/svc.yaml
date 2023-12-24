@@ -5,7 +5,6 @@ metadata:
 spec:
   selector:
     app: python-app
-  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
